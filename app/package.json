@@ -1,6 +1,6 @@
 {
   "scripts": {
-    "build": "npx tailwindcss -i ./src/static/input.css -o ./src/static/output.css",
+    "build": "npx tailwindcss -i ./src/static/css/input.css -o ./src/static/css/output.css",
     "start": "flask --app src/app --debug run"
   },
   "devDependencies": {

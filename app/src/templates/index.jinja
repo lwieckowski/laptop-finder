@@ -1,0 +1,22 @@
+{% extends 'layout.jinja' %}
+{% import 'components.jinja' as components %}
+
+{% block body %}
+
+{{ components.mobile_filter_offcanvas() }}
+<main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-24">
+        <h1 class="text-4xl font-bold tracking-tight text-gray-900">Laptopy</h1>
+        <div class="flex items-center">
+            {{ components.sort_menu() }}
+            {{ components.mobile_filter_button() }}
+        </div>
+    </div>
+    <div class="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
+        {{ components.filter_section() }}
+        <div class="lg:col-span-3">
+            Content
+        </div>
+    </div>
+</main>
+{% endblock %}

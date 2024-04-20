@@ -1,17 +1,11 @@
 {
   "scripts": {
-    "build": "tailwindcss build ./src/static/css/tailwind.css -o ./src/static/dist/tailwind.css --minify && npx rollup -c",
-    "start": "flask --app src/app run"
+    "build": "npx tailwindcss -i ./src/static/input.css -o ./src/static/output.css",
+    "start": "flask --app src/app --debug run"
   },
   "devDependencies": {
-    "@babel/preset-env": "^7.24.4",
-    "@rollup/plugin-babel": "^6.0.4",
-    "@rollup/plugin-node-resolve": "^15.2.3",
-    "@rollup/plugin-terser": "^0.4.4",
-    "rollup": "^4.14.3",
     "tailwindcss": "^3.4.3"
   },
   "dependencies": {
-    "alpinejs": "^3.13.8"
   }
 }

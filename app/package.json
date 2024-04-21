@@ -4,8 +4,7 @@
     "start": "flask --app src/app --debug run"
   },
   "devDependencies": {
+    "flowbite": "^2.3.0",
     "tailwindcss": "^3.4.3"
-  },
-  "dependencies": {
   }
 }

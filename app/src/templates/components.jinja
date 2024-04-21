@@ -78,9 +78,9 @@
 
 {% macro filter_section() %}
 
-<section aria-labelledby="filters-heading" class="pb-24 pt-6">
+<section aria-labelledby="filters-heading" class="hidden lg:block pb-24 pt-6">
     <h2 id="filters-heading" class="sr-only">Filters</h2>
-    <form class="hidden lg:block">
+    <form>
         {{ filter.accordion("Producent", filter.checkboxes(["Apple", "Asus", "Lenovo"])) }}
         {{ filter.accordion("Ekran", filter.checkboxes(["11 cali", "13 cali", "15 cali"])) }}
         {{ filter.accordion("Dysk", filter.checkboxes(["128GB", "256GB", "512GB", "1TB"])) }}

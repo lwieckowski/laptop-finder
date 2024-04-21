@@ -17,9 +17,9 @@
                     <thead>
                         <tr>
                             <th class="px-2 text-left bg-white">Model</th>
-                            <th class="px-2 text-left bg-white">Ekran</th>
-                            <th class="px-2 text-left bg-white">Dysk</th>
-                            <th class="px-2 text-left bg-white">RAM</th>
+                            <th class="hidden md:table-cell px-2 text-left bg-white">Ekran</th>
+                            <th class="hidden md:table-cell px-2 text-left bg-white">Dysk</th>
+                            <th class="hidden md:table-cell px-2 text-left bg-white">RAM</th>
                             <th class="hidden lg:table-cell px-2 text-left bg-white">Bateria</th>
                             <th class="hidden lg:table-cell px-2 text-left bg-white">Waga</th>
                             <th class="px-2 text-left bg-white">Wydajność</th>
@@ -30,9 +30,9 @@
                         {% for laptop in laptops %}
                         <tr>
                             <td class="px-2 whitespace-nowrap">{{ laptop.model }}</td>
-                            <td class="px-2">{{ laptop.screen }}</td>
-                            <td class="px-2">{{ laptop.disk }}</td>
-                            <td class="px-2">{{ laptop.ram }}</td>
+                            <td class="hidden md:table-cell px-2">{{ laptop.screen }}</td>
+                            <td class="hidden md:table-cell px-2">{{ laptop.disk }}</td>
+                            <td class="hidden md:table-cell px-2">{{ laptop.ram }}</td>
                             <td class="hidden lg:table-cell px-2">{{ laptop.battery }}</td>
                             <td class="hidden lg:table-cell px-2">{{ laptop.weight }}</td>
                             <td class="px-2">{{ laptop.performance }}</td>

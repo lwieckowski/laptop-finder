@@ -1321,6 +1321,10 @@ input:checked + .toggle-bg {
   flex-shrink: 0;
 }
 
+.table-auto {
+  table-layout: auto;
+}
+
 .origin-top-right {
   transform-origin: top right;
 }
@@ -2166,10 +2170,6 @@ input:checked + .toggle-bg {
     border-width: 0px;
   }
 
-  .md\:bg-transparent {
-    background-color: transparent;
-  }
-
   .md\:bg-white {
     --tw-bg-opacity: 1;
     background-color: rgb(255 255 255 / var(--tw-bg-opacity));
@@ -2181,11 +2181,6 @@ input:checked + .toggle-bg {
 
   .md\:p-6 {
     padding: 1.5rem;
-  }
-
-  .md\:text-blue-700 {
-    --tw-text-opacity: 1;
-    color: rgb(26 86 219 / var(--tw-text-opacity));
   }
 
   .md\:hover\:bg-transparent:hover {
@@ -2200,11 +2195,6 @@ input:checked + .toggle-bg {
   .md\:dark\:bg-gray-900:is(.dark *) {
     --tw-bg-opacity: 1;
     background-color: rgb(17 24 39 / var(--tw-bg-opacity));
-  }
-
-  .md\:dark\:text-blue-500:is(.dark *) {
-    --tw-text-opacity: 1;
-    color: rgb(63 131 248 / var(--tw-text-opacity));
   }
 
   .md\:dark\:hover\:bg-transparent:hover:is(.dark *) {

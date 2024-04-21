@@ -21,10 +21,10 @@
   </script>
 </head>
 
-<body class="font-sans ng-white">
+<body class="font-sans">
   {{ navbar(navlinks) }}
   {% block body %}{% endblock %}
-  {{ footer() }}
+  {{ footer(navlinks) }}
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.3.0/flowbite.min.js"></script>
   <script src="{{ url_for('static', filename='js/main.js') }}"></script>
 </body>

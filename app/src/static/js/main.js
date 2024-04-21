@@ -3,6 +3,8 @@ const filterClose = document.getElementById("filter-close");
 const filterOffcanvas = document.getElementById("filter-offcanvas");
 const sortToggle = document.getElementById("sort-toggle");
 const sortMenu = document.getElementById("sort-menu");
+const hamburgerButton = document.getElementById("hamburger-button");
+const hamburgerMenu = document.getElementById("hamburger-menu");
 
 const accordions = document.getElementsByClassName("accordion");
 
@@ -26,4 +28,8 @@ filterClose.addEventListener("click", () => {
 
 sortToggle.addEventListener("click", () => {
   sortMenu.classList.toggle("hidden");
+});
+
+hamburgerButton.addEventListener("click", () => {
+  hamburgerMenu.classList.toggle("hidden");
 });

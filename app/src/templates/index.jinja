@@ -1,48 +1,22 @@
 {% extends 'layout.jinja' %}
 
+{% from 'features/filter.jinja' import filters, mobile_filters, mobile_filter_button %}
+{% from 'features/sort.jinja' import sort_dropdown %}
+{% from 'features/table.jinja' import table %}
+
 {% block body %}
-{{ components.mobile_filter_offcanvas() }}
+{{ mobile_filters() }}
 <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-8">
         <h1 class="text-3xl font-bold tracking-tight text-gray-900">Do gier</h1>
         <div class="flex items-center">
-            {{ components.sort_menu() }}
-            {{ components.mobile_filter_button() }}
+            {{ sort_dropdown() }}
+            {{ mobile_filter_button() }}
         </div>
     </div>
     <div class="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
-        {{ components.filter_section() }}
-            <div class="lg:col-span-3">
-                <table class="w-full mt-4">
-                    <thead>
-                        <tr>
-                            <th class="px-2 text-left bg-white">Model</th>
-                            <th class="hidden md:table-cell px-2 text-left bg-white">Ekran</th>
-                            <th class="hidden md:table-cell px-2 text-left bg-white">Dysk</th>
-                            <th class="hidden md:table-cell px-2 text-left bg-white">RAM</th>
-                            <th class="hidden lg:table-cell px-2 text-left bg-white">Bateria</th>
-                            <th class="hidden lg:table-cell px-2 text-left bg-white">Waga</th>
-                            <th class="px-2 text-left bg-white">Wydajność</th>
-                            <th class="px-2 text-left bg-white">Cena</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for laptop in laptops %}
-                        <tr>
-                            <td class="px-2 whitespace-nowrap">{{ laptop.model }}</td>
-                            <td class="hidden md:table-cell px-2">{{ laptop.screen }}</td>
-                            <td class="hidden md:table-cell px-2">{{ laptop.disk }}</td>
-                            <td class="hidden md:table-cell px-2">{{ laptop.ram }}</td>
-                            <td class="hidden lg:table-cell px-2">{{ laptop.battery }}</td>
-                            <td class="hidden lg:table-cell px-2">{{ laptop.weight }}</td>
-                            <td class="px-2">{{ laptop.performance }}</td>
-                            <td class="px-2">{{ laptop.price }}</td>
-                        </tr>
-                        {% endfor %}
-
-                    </tbody>
-                </table>
-            </div>
+        {{ filters() }}
+        {{ table(laptops) }}
     </div>
 </main>
 {% endblock %}

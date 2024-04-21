@@ -3,6 +3,12 @@ from flask import Flask, render_template
 app = Flask(__name__)
 
 
+NAVLINKS = [
+    {"text": "Do gier", "url": "/"},
+    {"text": "Do pracy", "url": "/"},
+    {"text": "Wszystkie", "url": "/"},
+]
+
 LAPTOPS = [
     {
         "model": "Apple MacBook Air",
@@ -388,4 +394,4 @@ LAPTOPS = [
 
 @app.route("/")
 def index():
-    return render_template("index.jinja", laptops=LAPTOPS)
+    return render_template("index.jinja", laptops=LAPTOPS, navlinks=NAVLINKS)

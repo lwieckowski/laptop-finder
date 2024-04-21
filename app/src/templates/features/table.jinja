@@ -1,33 +1,52 @@
 {% macro table(laptops) %}
 <div class="lg:col-span-3">
-    <table class="w-full mt-4">
-        <thead>
-            <tr>
-                <th class="px-2 text-left bg-white">Model</th>
-                <th class="hidden md:table-cell px-2 text-left bg-white">Ekran</th>
-                <th class="hidden md:table-cell px-2 text-left bg-white">Dysk</th>
-                <th class="hidden md:table-cell px-2 text-left bg-white">RAM</th>
-                <th class="hidden lg:table-cell px-2 text-left bg-white">Bateria</th>
-                <th class="hidden lg:table-cell px-2 text-left bg-white">Waga</th>
-                <th class="px-2 text-left bg-white">Wydajność</th>
-                <th class="px-2 text-left bg-white">Cena</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for laptop in laptops %}
-            <tr>
-                <td class="px-2 whitespace-nowrap">{{ laptop.model }}</td>
-                <td class="hidden md:table-cell px-2">{{ laptop.screen }}</td>
-                <td class="hidden md:table-cell px-2">{{ laptop.disk }}</td>
-                <td class="hidden md:table-cell px-2">{{ laptop.ram }}</td>
-                <td class="hidden lg:table-cell px-2">{{ laptop.battery }}</td>
-                <td class="hidden lg:table-cell px-2">{{ laptop.weight }}</td>
-                <td class="px-2">{{ laptop.performance }}</td>
-                <td class="px-2">{{ laptop.price }}</td>
-            </tr>
-            {% endfor %}
 
-        </tbody>
-    </table>
+
+    <div class="relative overflow-x-auto">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                <tr>
+                    <th scope="col" class="px-6 py-3">Model</th>
+                    <th scope="col" class="px-6 py-3 hidden md:table-cell">Ekran</th>
+                    <th scope="col" class="px-6 py-3 hidden md:table-cell">Dysk</th>
+                    <th scope="col" class="px-6 py-3 hidden md:table-cell">RAM</th>
+                    <th scope="col" class="px-6 py-3 hidden lg:table-cell">Bateria</th>
+                    <th scope="col" class="px-6 py-3 hidden lg:table-cell">Waga</th>
+                    <th scope="col" class="px-6 py-3">Wydajność</th>
+                    <th scope="col" class="px-6 py-3">Cena</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for laptop in laptops %}
+                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                        {{ laptop.model }}
+                    </th>
+                    <td class="px-6 py-4 hidden md:table-cell">
+                        {{ laptop.screen }}
+                    </td>
+                    <td class="px-6 py-4 hidden md:table-cell">
+                        {{ laptop.disk }}
+                    </td>
+                    <td class="px-6 py-4 hidden md:table-cell">
+                        {{ laptop.ram}}
+                    </td>
+                    <td class="px-6 py-4 hidden lg:table-cell">
+                        {{ laptop.battery}}
+                    </td>
+                    <td class="px-6 py-4 hidden lg:table-cell">
+                        {{ laptop.weight}}
+                    </td>
+                    <td class="px-6 py-4 hidden lg:table-cell">
+                        {{ laptop.performance}}
+                    </td>
+                    <td class="px-6 py-4 hidden lg:table-cell">
+                        {{ laptop.price}}
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 {% endmacro %}

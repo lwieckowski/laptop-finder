@@ -1,16 +1,14 @@
 {% extends 'layout.jinja' %}
 
 {% from 'features/filter.jinja' import filters, mobile_filters, mobile_filter_button %}
-{% from 'features/sort.jinja' import sort_dropdown %}
 {% from 'features/table.jinja' import table %}
 
 {% block body %}
 {{ mobile_filters() }}
 <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="flex items-baseline justify-between border-b border-gray-200 pb-6 pt-8">
-    <h2 class="text-4xl font-extrabold dark:text-white">Laptopy do gier</h2>
+    <div class="flex items-baseline justify-between pb-6 pt-8">
+        <h2 class="text-4xl font-extrabold dark:text-white">Laptopy do gier</h2>
         <div class="flex items-center">
-            {{ sort_dropdown() }}
             {{ mobile_filter_button() }}
         </div>
     </div>

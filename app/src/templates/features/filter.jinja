@@ -15,12 +15,12 @@
     <div class="fixed inset-0 bg-black bg-opacity-25 transition-all"></div>
     <div class="fixed inset-0 z-40 flex">
         <div
-            class="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white dark:bg-gray-800 py-4 pb-12 shadow-xl">
+            class="relative ml-auto flex h-full w-full max-w-xs flex-col overflow-y-auto bg-white dark:bg-slate-800 py-4 pb-12 shadow-xl">
 
             <div class="flex items-center justify-between px-4">
-                <h2 class="text-lg font-medium text-gray-900 dark:text-white">Filtry</h2>
+                <h2 class="text-lg font-medium text-slate-900 dark:text-white">Filtry</h2>
                 <button id="filter-close" type="button"
-                    class="-mr-2 flex h-10 w-10 items-center justify-center rounded-md p-2 text-gray-400">
+                    class="-mr-2 flex h-10 w-10 items-center justify-center rounded-md p-2 text-slate-400">
                     <span class="sr-only">Zamknij filtry</span>
                     <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                         aria-hidden="true">
@@ -29,7 +29,7 @@
                 </button>
             </div>
 
-            <form class="mt-4 px-4 border-t border-gray-200 dark:border-gray-700">
+            <form class="mt-4 px-4 border-t border-slate-200 dark:border-slate-700">
                 <h3 class="sr-only">Filtry</h3>
                 {{ accordion("Producent", checkboxes(["Apple", "Asus", "Lenovo"])) }}
                 {{ accordion("Ekran", checkboxes(["11 cali", "13 cali", "15 cali"])) }}
@@ -42,12 +42,12 @@
 
 
 {% macro accordion(title, content) %}
-<div class="border-b dark:bg-gray-800 border-gray-200 dark:border-gray-700 py-6">
+<div class="border-b border-slate-200 dark:border-slate-700 py-6">
     <h3 class="-my-3 flow-root accordion">
         <button type="button"
-            class="flex w-full items-center justify-between py-3 text-sm text-gray-400 hover:text-gray-500 dark:text-white"
+            class="flex w-full items-center justify-between py-3 text-sm text-slate-400 hover:text-slate-500 dark:text-white"
             aria-controls="filter-section-0" aria-expanded="false">
-            <span class="font-medium text-gray-900 dark:text-white">{{ title }}</span>
+            <span class="font-medium text-slate-900 dark:text-white">{{ title }}</span>
             <span class="ml-6 flex items-center">
                 <svg class="h-5 w-5 icon" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
                     <path
@@ -72,8 +72,8 @@
     {% for label in labels %}
     <div class="flex items-center">
         <input id="filter-color-0" name="color[]" value="white" type="checkbox"
-            class="h-4 w-4 rounded border-gray-300 text-blue-600 focus:ring-blue-500">
-        <label for="filter-color-0" class="ml-3 text-sm text-gray-600 dark:text-white">{{ label }}</label>
+            class="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500">
+        <label for="filter-color-0" class="ml-3 text-sm text-slate-600 dark:text-white">{{ label }}</label>
     </div>
     {% endfor %}
 </div>
@@ -81,7 +81,7 @@
 
 
 {% macro mobile_filter_button() %}
-<button id="filter-open" type="button" class="-m-2 ml-4 p-2 text-gray-400 hover:text-gray-500 dark:text-white sm:ml-6 lg:hidden">
+<button id="filter-open" type="button" class="-m-2 ml-4 p-2 text-slate-400 hover:text-slate-500 dark:text-white sm:ml-6 lg:hidden">
     <span class="sr-only">Filters</span>
     <svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 20 20" fill="currentColor">
         <path fill-rule="evenodd"

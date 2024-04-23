@@ -1,44 +1,41 @@
 {% macro table(laptops) %}
-<div class="lg:col-span-3">
-    <div class="shadow-md rounded-lg mt-4 mb-4">
-        <table class="table-auto overflow-x-auto w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-            <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 sticky top-0">
-                <tr>
-
-                    <th scope="col" class="px-6 py-3">{{ sortable_header("Model") }}</th>
-                    <th scope="col" class="px-6 py-3 hidden md:table-cell">{{ sortable_header("Ekran") }}</th>
-                    <th scope="col" class="px-6 py-3 hidden md:table-cell">{{ sortable_header("Dysk") }}</th>
-                    <th scope="col" class="px-6 py-3 hidden md:table-cell">{{ sortable_header("RAM") }}</th>
-                    <th scope="col" class="px-6 py-3 hidden lg:table-cell">{{ sortable_header("Waga") }}</th>
-                    <th scope="col" class="px-6 py-3">{{ sortable_header("Cena") }}</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for laptop in laptops %}
-                <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                    <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                        {{ laptop.model }}
-                    </th>
-                    <td class="px-6 py-4 hidden md:table-cell">
-                        {{ laptop.screen }}
-                    </td>
-                    <td class="px-6 py-4 hidden md:table-cell">
-                        {{ laptop.disk }}
-                    </td>
-                    <td class="px-6 py-4 hidden md:table-cell">
-                        {{ laptop.ram}}
-                    </td>
-                    <td class="px-6 py-4 hidden lg:table-cell">
-                        {{ laptop.weight}}
-                    </td>
-                    <td class="px-6 py-4">
-                        {{ laptop.price}}
-                    </td>
-                </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    </div>
+<div id="table" class="shadow-md rounded-lg mt-4 mb-4" role="tabpanel" aria-labelledby="table-tab">
+    <table class="table-auto overflow-x-auto w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 sticky top-0">
+            <tr>
+                <th scope="col" class="px-6 py-3">{{ sortable_header("Model") }}</th>
+                <th scope="col" class="px-6 py-3 hidden md:table-cell">{{ sortable_header("Ekran") }}</th>
+                <th scope="col" class="px-6 py-3 hidden md:table-cell">{{ sortable_header("Dysk") }}</th>
+                <th scope="col" class="px-6 py-3 hidden md:table-cell">{{ sortable_header("RAM") }}</th>
+                <th scope="col" class="px-6 py-3 hidden lg:table-cell">{{ sortable_header("Waga") }}</th>
+                <th scope="col" class="px-6 py-3">{{ sortable_header("Cena") }}</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for laptop in laptops %}
+            <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                    {{ laptop.model }}
+                </th>
+                <td class="px-6 py-4 hidden md:table-cell">
+                    {{ laptop.screen }}
+                </td>
+                <td class="px-6 py-4 hidden md:table-cell">
+                    {{ laptop.disk }}
+                </td>
+                <td class="px-6 py-4 hidden md:table-cell">
+                    {{ laptop.ram}}
+                </td>
+                <td class="px-6 py-4 hidden lg:table-cell">
+                    {{ laptop.weight}}
+                </td>
+                <td class="px-6 py-4">
+                    {{ laptop.price}}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
 </div>
 {% endmacro %}
 

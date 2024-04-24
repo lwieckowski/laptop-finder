@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -357,3 +357,11 @@ LAPTOPS = [
 @app.route("/")
 def index():
     return render_template("index.jinja", laptops=LAPTOPS, navlinks=NAVLINKS)
+
+@app.route("/search", methods=["POST"])
+def search():
+    search_term = str(request.form.get("search"))
+    if not search_term:
+        return render_template("features/table_body.jinja", laptops=LAPTOPS)
+    res = [lap for lap in LAPTOPS if search_term.lower() in lap["model"].lower()]
+    return render_template("features/table_body.jinja", laptops=res)

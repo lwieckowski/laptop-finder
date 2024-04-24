@@ -1,0 +1,22 @@
+{% for laptop in laptops %}
+<tr class="bg-white dark:bg-slate-800 dark:border-slate-700 border-b">
+    <th scope="row" class="px-6 py-4 font-medium text-slate-900 whitespace-nowrap dark:text-white">
+        {{ laptop.model }}
+    </th>
+    <td class="px-6 py-4 hidden md:table-cell">
+        {{ laptop.screen }}
+    </td>
+    <td class="px-6 py-4 hidden md:table-cell">
+        {{ laptop.disk }}
+    </td>
+    <td class="px-6 py-4 hidden md:table-cell">
+        {{ laptop.ram}}
+    </td>
+    <td class="px-6 py-4 hidden lg:table-cell">
+        {{ laptop.weight}}
+    </td>
+    <td class="px-6 py-4">
+        {{ laptop.price}}
+    </td>
+</tr>
+{% endfor %}

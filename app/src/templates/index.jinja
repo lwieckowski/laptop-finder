@@ -1,7 +1,6 @@
 {% extends 'layout.jinja' %}
 
 {% from 'features/filter.jinja' import filters, mobile_filters, mobile_filter_button %}
-{% from 'features/tabs.jinja' import tabs %}
 {% from 'features/table.jinja' import table %}
 {% from 'features/chart.jinja' import chart %}
 
@@ -16,13 +15,7 @@
     </div>
     <div class="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
         {{ filters() }}
-        <div class="lg:col-span-3">
-            {{ tabs() }}
-            <div id="tabs-content">
-                {{ table(laptops) }}
-                {{ chart(laptops) }}
-            </div>
-        </div>
+        {{ table(laptops) }}
     </div>
 </main>
 {% endblock %}

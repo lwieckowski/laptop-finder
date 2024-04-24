@@ -1,16 +1,16 @@
-{% macro filters() %}
+{% macro sidebar_filters(filters) %}
 <section aria-labelledby="filters-heading" class="hidden lg:block pb-24 pt-6">
     <h2 id="filters-heading" class="sr-only">Filters</h2>
     <form>
-        {{ accordion("Producent", checkboxes(["Apple", "Asus", "Lenovo"])) }}
-        {{ accordion("Ekran", checkboxes(["11 cali", "13 cali", "15 cali"])) }}
-        {{ accordion("Dysk", checkboxes(["128GB", "256GB", "512GB", "1TB"])) }}
+        {% for filter in filters %}
+        {{ accordion(filter.type, checkboxes(filter.type, filter.options)) }}
+        {% endfor %}
     </form>
 </section>
 {% endmacro %}
 
 
-{% macro mobile_filters() %}
+{% macro mobile_filters(filters) %}
 <div id="filter-offcanvas" class="relative z-40 lg:hidden" role="dialog" aria-modal="true">
     <div class="fixed inset-0 bg-black bg-opacity-25 transition-all"></div>
     <div class="fixed inset-0 z-40 flex">
@@ -31,9 +31,9 @@
 
             <form class="mt-4 px-4 border-t border-slate-200 dark:border-slate-700">
                 <h3 class="sr-only">Filtry</h3>
-                {{ accordion("Producent", checkboxes(["Apple", "Asus", "Lenovo"])) }}
-                {{ accordion("Ekran", checkboxes(["11 cali", "13 cali", "15 cali"])) }}
-                {{ accordion("Dysk", checkboxes(["128GB", "256GB", "512GB", "1TB"])) }}
+                {% for filter in filters %}
+                {{ accordion(filter.type, checkboxes(filter.type, filter.options)) }}
+                {% endfor %}
             </form>
         </div>
     </div>
@@ -67,13 +67,14 @@
 {% endmacro %}
 
 
-{% macro checkboxes(labels)%}
+{% macro checkboxes(type, options)%}
 <div class="space-y-4">
-    {% for label in labels %}
+    {% for option in options %}
     <div class="flex items-center">
-        <input id="filter-color-0" name="color[]" value="white" type="checkbox"
-            class="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500">
-        <label for="filter-color-0" class="ml-3 text-sm text-slate-600 dark:text-white">{{ label }}</label>
+        <input id="filter-color-0" name="{{ type }}" value=" {{ option.value }}" type="checkbox"
+            class="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500" hx-post="/filter"
+            hx-trigger="change" hx-target="#table-body">
+        <label for="filter-color-0" class="ml-3 text-sm text-slate-600 dark:text-white">{{ option.label }}</label>
     </div>
     {% endfor %}
 </div>
@@ -81,7 +82,8 @@
 
 
 {% macro mobile_filter_button() %}
-<button id="filter-open" type="button" class="-m-2 ml-4 p-2 text-slate-400 hover:text-slate-500 dark:text-white sm:ml-6 lg:hidden">
+<button id="filter-open" type="button"
+    class="-m-2 ml-4 p-2 text-slate-400 hover:text-slate-500 dark:text-white sm:ml-6 lg:hidden">
     <span class="sr-only">Filters</span>
     <svg class="h-5 w-5" aria-hidden="true" viewBox="0 0 20 20" fill="currentColor">
         <path fill-rule="evenodd"

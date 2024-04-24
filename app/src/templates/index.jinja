@@ -1,11 +1,11 @@
 {% extends 'layout.jinja' %}
 
-{% from 'features/filter.jinja' import filters, mobile_filters, mobile_filter_button %}
+{% from 'features/filter.jinja' import sidebar_filters, mobile_filters, mobile_filter_button %}
 {% from 'features/table.jinja' import table %}
 {% from 'features/chart.jinja' import chart %}
 
 {% block body %}
-{{ mobile_filters() }}
+{{ mobile_filters(filters) }}
 <main class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
     <div class="flex items-baseline justify-between pb-6 pt-8">
         <h2 class="text-4xl font-extrabold dark:text-white">Laptopy do gier</h2>
@@ -14,7 +14,7 @@
         </div>
     </div>
     <div class="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
-        {{ filters() }}
+        {{ sidebar_filters(filters) }}
         {{ table(laptops) }}
     </div>
 </main>

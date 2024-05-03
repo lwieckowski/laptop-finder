@@ -22,43 +22,61 @@ filterClose.addEventListener("click", () => {
   filterOffcanvas.classList.add("hidden");
 });
 
-var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
-var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
+var themeToggleDarkIcon = document.getElementById("theme-toggle-dark-icon");
+var themeToggleLightIcon = document.getElementById("theme-toggle-light-icon");
 
 // Change the icons inside the button based on previous settings
-if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-    themeToggleLightIcon.classList.remove('hidden');
+if (
+  localStorage.getItem("color-theme") === "dark" ||
+  (!("color-theme" in localStorage) &&
+    window.matchMedia("(prefers-color-scheme: dark)").matches)
+) {
+  themeToggleLightIcon.classList.remove("hidden");
 } else {
-    themeToggleDarkIcon.classList.remove('hidden');
+  themeToggleDarkIcon.classList.remove("hidden");
 }
 
-var themeToggleBtn = document.getElementById('theme-toggle');
+var themeToggleBtn = document.getElementById("theme-toggle");
 
-themeToggleBtn.addEventListener('click', function() {
+themeToggleBtn.addEventListener("click", function () {
+  // toggle icons inside button
+  themeToggleDarkIcon.classList.toggle("hidden");
+  themeToggleLightIcon.classList.toggle("hidden");
 
-    // toggle icons inside button
-    themeToggleDarkIcon.classList.toggle('hidden');
-    themeToggleLightIcon.classList.toggle('hidden');
-
-    // if set via local storage previously
-    if (localStorage.getItem('color-theme')) {
-        if (localStorage.getItem('color-theme') === 'light') {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('color-theme', 'dark');
-        } else {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('color-theme', 'light');
-        }
+  // if set via local storage previously
+  if (localStorage.getItem("color-theme")) {
+    if (localStorage.getItem("color-theme") === "light") {
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("color-theme", "dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("color-theme", "light");
+    }
 
     // if NOT set via local storage previously
+  } else {
+    if (document.documentElement.classList.contains("dark")) {
+      document.documentElement.classList.remove("dark");
+      localStorage.setItem("color-theme", "light");
     } else {
-        if (document.documentElement.classList.contains('dark')) {
-            document.documentElement.classList.remove('dark');
-            localStorage.setItem('color-theme', 'light');
-        } else {
-            document.documentElement.classList.add('dark');
-            localStorage.setItem('color-theme', 'dark');
-        }
+      document.documentElement.classList.add("dark");
+      localStorage.setItem("color-theme", "dark");
     }
-    
+  }
 });
+
+const mainBody = document.getElementById("main-body");
+const filterForm = document.getElementById("filter-form");
+const offcanvasFilterForm = document.getElementById("offcanvas-filter-form");
+const filters = document.getElementById("filters");
+
+const resizeObserver = new ResizeObserver((entries) => {
+  const width = entries[0].borderBoxSize[0].inlineSize;
+  if (width < 1024) {
+    offcanvasFilterForm.appendChild(filters);
+  } else {
+    filterForm.appendChild(filters);
+  }
+});
+
+resizeObserver.observe(mainBody);

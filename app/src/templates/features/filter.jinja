@@ -1,17 +1,14 @@
 {% macro sidebar_filters(filters) %}
 <section aria-labelledby="filters-heading" class="hidden lg:block pb-24 pt-6">
     <h2 id="filters-heading" class="sr-only">Filters</h2>
-    <form>
-        {% for filter in filters %}
-        {{ accordion(filter.type, checkboxes(filter.type, filter.options)) }}
-        {% endfor %}
+    <form id="filter-form">
     </form>
 </section>
 {% endmacro %}
 
 
 {% macro mobile_filters(filters) %}
-<div id="filter-offcanvas" class="relative z-40 lg:hidden" role="dialog" aria-modal="true">
+<div id="filter-offcanvas" class="relative z-40 hidden lg:hidden" role="dialog" aria-modal="true">
     <div class="fixed inset-0 bg-black bg-opacity-25 transition-all"></div>
     <div class="fixed inset-0 z-40 flex">
         <div
@@ -31,9 +28,13 @@
 
             <form class="mt-4 px-4 border-t border-slate-200 dark:border-slate-700">
                 <h3 class="sr-only">Filtry</h3>
-                {% for filter in filters %}
-                {{ accordion(filter.type, checkboxes(filter.type, filter.options)) }}
-                {% endfor %}
+                <div id="offcanvas-filter-form">
+                    <div id="filters">
+                        {% for filter in filters %}
+                        {{ accordion(filter.type, checkboxes(filter.type, filter.options)) }}
+                        {% endfor %}
+                    </div>
+                </div>
             </form>
         </div>
     </div>
@@ -73,7 +74,7 @@
     <div class="flex items-center">
         <input id="filter-color-0" name="{{ type }}" value=" {{ option.value }}" type="checkbox"
             class="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500" hx-post="/filter"
-            hx-trigger="change" hx-target="#table-body">
+            hx-trigger="change" hx-target="#table-body" hx-include="#filter-form, #search-form">
         <label for="filter-color-0" class="ml-3 text-sm text-slate-600 dark:text-white">{{ option.label }}</label>
     </div>
     {% endfor %}

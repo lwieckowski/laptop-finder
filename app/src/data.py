@@ -5,7 +5,8 @@ NAVLINKS = [
 ]
 FILTERS = [
     {
-        "type": "Producent",
+        "type": "producer",
+        "label": "Producent",
         "options": [
             {"label": "Apple", "value": "Apple"},
             {"label": "Dell", "value": "Dell"},
@@ -20,7 +21,8 @@ FILTERS = [
         ],
     },
     {
-        "type": "Ekran",
+        "type": "screen",
+        "label": "Ekran",
         "options": [
             {"label": "13.1", "value": "13.1"},
             {"label": "13.4", "value": "13.4"},
@@ -30,7 +32,8 @@ FILTERS = [
         ],
     },
     {
-        "type": "Dysk",
+        "type": "disk",
+        "label": "Dysk",
         "options": [
             {"label": "128GB", "value": "128GB"},
             {"label": "256GB", "value": "256GB"},

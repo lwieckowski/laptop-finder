@@ -4,7 +4,7 @@
     <div id="filter-container">
         <form id="filters" hx-post="/filter" hx-trigger="change" hx-target="#table-body" hx-include="#filters, #search">
             {% for filter in filters %}
-            {{ accordion(filter.type, checkboxes(filter.type, filter.options)) }}
+            {{ accordion(filter.label, checkboxes(filter.type, filter.options)) }}
             {% endfor %}
         </form>
     </div>

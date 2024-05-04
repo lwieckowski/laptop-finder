@@ -2,7 +2,7 @@
 <section aria-labelledby="filters-heading" class="hidden lg:block pb-24 pt-6">
     <h2 id="filters-heading" class="sr-only">Filters</h2>
     <div id="filter-container">
-        <form id="filters">
+        <form id="filters" hx-post="/filter" hx-trigger="change" hx-target="#table-body" hx-include="#filters, #search">
             {% for filter in filters %}
             {{ accordion(filter.type, checkboxes(filter.type, filter.options)) }}
             {% endfor %}
@@ -72,8 +72,7 @@
     {% for option in options %}
     <div class="flex items-center">
         <input id="filter-color-0" name="{{ type }}" value=" {{ option.value }}" type="checkbox"
-            class="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500" hx-post="/filter"
-            hx-trigger="change" hx-target="#table-body" hx-include="#filters, #search">
+            class="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500">
         <label for="filter-color-0" class="ml-3 text-sm text-slate-600 dark:text-white">{{ option.label }}</label>
     </div>
     {% endfor %}

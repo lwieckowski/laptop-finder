@@ -66,16 +66,16 @@ themeToggleBtn.addEventListener("click", function () {
 });
 
 const mainBody = document.getElementById("main-body");
-const filterForm = document.getElementById("filter-form");
-const offcanvasFilterForm = document.getElementById("offcanvas-filter-form");
+const filterContainer = document.getElementById("filter-container");
+const offcanvasFilterContainer = document.getElementById("offcanvas-filter-container");
 const filters = document.getElementById("filters");
 
 const resizeObserver = new ResizeObserver((entries) => {
   const width = entries[0].borderBoxSize[0].inlineSize;
   if (width < 1024) {
-    offcanvasFilterForm.appendChild(filters);
+    offcanvasFilterContainer.appendChild(filters);
   } else {
-    filterForm.appendChild(filters);
+    filterContainer.appendChild(filters);
   }
 });
 

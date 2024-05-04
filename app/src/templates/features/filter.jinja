@@ -1,8 +1,13 @@
 {% macro sidebar_filters(filters) %}
 <section aria-labelledby="filters-heading" class="hidden lg:block pb-24 pt-6">
     <h2 id="filters-heading" class="sr-only">Filters</h2>
-    <form id="filter-form">
-    </form>
+    <div id="filter-container">
+        <form id="filters">
+            {% for filter in filters %}
+            {{ accordion(filter.type, checkboxes(filter.type, filter.options)) }}
+            {% endfor %}
+        </form>
+    </div>
 </section>
 {% endmacro %}
 
@@ -26,16 +31,10 @@
                 </button>
             </div>
 
-            <form class="mt-4 px-4 border-t border-slate-200 dark:border-slate-700">
+            <div class="mt-4 px-4 border-t border-slate-200 dark:border-slate-700">
                 <h3 class="sr-only">Filtry</h3>
-                <div id="offcanvas-filter-form">
-                    <div id="filters">
-                        {% for filter in filters %}
-                        {{ accordion(filter.type, checkboxes(filter.type, filter.options)) }}
-                        {% endfor %}
-                    </div>
-                </div>
-            </form>
+                <div id="offcanvas-filter-container"></div>
+            </div>
         </div>
     </div>
 </div>
@@ -74,7 +73,7 @@
     <div class="flex items-center">
         <input id="filter-color-0" name="{{ type }}" value=" {{ option.value }}" type="checkbox"
             class="h-4 w-4 rounded border-slate-300 text-blue-600 focus:ring-blue-500" hx-post="/filter"
-            hx-trigger="change" hx-target="#table-body" hx-include="#filter-form, #search-form">
+            hx-trigger="change" hx-target="#table-body" hx-include="#filters, #search">
         <label for="filter-color-0" class="ml-3 text-sm text-slate-600 dark:text-white">{{ option.label }}</label>
     </div>
     {% endfor %}

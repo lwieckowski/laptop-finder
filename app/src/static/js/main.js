@@ -67,8 +67,14 @@ themeToggleBtn.addEventListener("click", function () {
 
 const mainBody = document.getElementById("main-body");
 const filterContainer = document.getElementById("filter-container");
-const offcanvasFilterContainer = document.getElementById("offcanvas-filter-container");
+const offcanvasFilterContainer = document.getElementById(
+  "offcanvas-filter-container"
+);
 const filters = document.getElementById("filters");
+const search = document.getElementById("search");
+
+filters.reset();
+search.value = "";
 
 const resizeObserver = new ResizeObserver((entries) => {
   const width = entries[0].borderBoxSize[0].inlineSize;

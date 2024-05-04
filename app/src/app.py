@@ -12,28 +12,28 @@ def index():
     )
 
 
-@app.route("/search", methods=["POST"])
-def search():
-    search_term = str(request.form.get("search"))
-    if not search_term:
-        return render_template("features/table_body.jinja", laptops=LAPTOPS)
-    res = [lap for lap in LAPTOPS if search_term.lower() in lap["model"].lower()]
-    return render_template("features/table_body.jinja", laptops=res)
-
-
 @app.route("/filter", methods=["POST"])
 def filter():
-    filters = request.form.to_dict(flat=False)
-    if not filters:
+    form_data = request.form.to_dict(flat=False)
+    if not form_data:
         return render_template("features/table_body.jinja", laptops=LAPTOPS)
-    res = apply_filters(filters, LAPTOPS)
+    res = apply_filters(form_data, LAPTOPS)
+    res = apply_search(form_data, res)
     return render_template("features/table_body.jinja", laptops=res)
+
+
+def apply_search(filters, laptops):
+    search_term = str(filters.get("search")[0]).strip()
+    print(search_term)
+    if not search_term:
+        return laptops
+    return [lap for lap in laptops if search_term.lower() in lap["model"].lower()]
 
 
 def apply_filters(filters, laptops):
-    prd = filters.get("Producent")
-    screen = filters.get("Ekran")
-    disk = filters.get("Dysk")
+    prd = filters.get("producer")
+    screen = filters.get("screen")
+    disk = filters.get("disk")
     res = laptops
     if prd:
         res = [lap for lap in res if lap["producer"] in stripped(prd)]

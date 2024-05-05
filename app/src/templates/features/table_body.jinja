@@ -1,22 +1,95 @@
-{% for laptop in laptops %}
-<tr class="bg-white dark:bg-slate-800 dark:border-slate-700 border-b">
-    <th scope="row" class="px-6 py-4 font-medium text-slate-900 whitespace-nowrap dark:text-white">
-        {{ laptop.model }}
-    </th>
-    <td class="px-6 py-4 hidden md:table-cell">
-        {{ laptop.screen }}
-    </td>
-    <td class="px-6 py-4 hidden md:table-cell">
-        {{ laptop.disk }}
-    </td>
-    <td class="px-6 py-4 hidden md:table-cell">
-        {{ laptop.ram}}
-    </td>
-    <td class="px-6 py-4 hidden lg:table-cell">
-        {{ laptop.weight}}
-    </td>
-    <td class="px-6 py-4">
-        {{ laptop.price}}
-    </td>
-</tr>
-{% endfor %}
+{% from '/components/sortable_header.jinja' import sortable_header %}
+
+<table class="table-auto w-full text-sm text-left rtl:text-right">
+    <thead class="text-xs text-slate-700 uppercase bg-slate-50 dark:bg-slate-700 dark:text-slate-400 sticky top-0">
+        <tr>
+            <th scope="col" class="px-6 py-3">{{ sortable_header("Model") }}</th>
+            <th scope="col" class="px-6 py-3 hidden md:table-cell">{{ sortable_header("Ekran") }}</th>
+            <th scope="col" class="px-6 py-3 hidden md:table-cell">{{ sortable_header("Dysk") }}</th>
+            <th scope="col" class="px-6 py-3 hidden md:table-cell">{{ sortable_header("RAM") }}</th>
+            <th scope="col" class="px-6 py-3 hidden lg:table-cell">{{ sortable_header("Waga") }}</th>
+            <th scope="col" class="px-6 py-3">{{ sortable_header("Cena") }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for laptop in laptops %}
+        <tr class="bg-white dark:bg-slate-800 dark:border-slate-700 border-b">
+            <th scope="row" class="px-6 py-4 font-medium text-slate-900 whitespace-nowrap dark:text-white">
+                {{ laptop.model }}
+            </th>
+            <td class="px-6 py-4 hidden md:table-cell">
+                {{ laptop.screen }}
+            </td>
+            <td class="px-6 py-4 hidden md:table-cell">
+                {{ laptop.disk }}
+            </td>
+            <td class="px-6 py-4 hidden md:table-cell">
+                {{ laptop.ram}}
+            </td>
+            <td class="px-6 py-4 hidden lg:table-cell">
+                {{ laptop.weight}}
+            </td>
+            <td class="px-6 py-4">
+                {{ laptop.price}}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
+    <span
+        class="text-sm font-normal text-slate-500 dark:text-slate-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">Pokazuję
+        <span class="font-semibold text-slate-900 dark:text-white">{{ 1 + (page - 1) * per_page }} - {{ (page - 1) *
+            per_page + laptops|length }}</span> z <span class="font-semibold text-slate-900 dark:text-white">{{ total
+            }}</span></span>
+    <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
+        {% if page == 1 %}
+        <li>
+            <button disabled
+                class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-slate-300 bg-white border border-slate-300 rounded-s-lg dark:bg-slate-800 dark:border-slate-700 dark:text-slate-600">Wstecz</button>
+        </li>
+        {% else %}
+        <li>
+            <button name="page" value="{{ page - 1 }}" hx-post="/laptops" hx-trigger="click" hx-target="#table-body"
+                hx-include="#filters, #search"
+                class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-slate-500 bg-white border border-slate-300 rounded-s-lg hover:bg-slate-100 hover:text-slate-700 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white">Wstecz</button>
+        </li>
+        {% endif %}
+        {% for i in range(1, page) %}
+        <li>
+            <button hx-post="/laptops" name="page" value="{{ i }}" hx-trigger="click" hx-target="#table-body"
+                hx-include="#filters, #search"
+                class="flex items-center justify-center px-3 h-8 leading-tight text-slate-500 bg-white border border-slate-300 hover:bg-slate-100 hover:text-slate-700 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white">{{
+                i }}</button>
+        </li>
+        {% endfor %}
+        <li>
+            <button hx-post="/laptops" name="page" value="{{ page }}" hx-trigger="click" hx-target="#table-body"
+                hx-include="#filters, #search" aria-current="page"
+                class="flex items-center justify-center px-3 h-8 text-blue-600 border border-slate-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-700 dark:text-white">{{
+                page }}</button>
+        </li>
+        {% set total_pages = (total/per_page)|round|int %}
+        {% for i in range(page + 1, total_pages + 1) %}
+        <li>
+            <button hx-post="/laptops" name="page" value="{{ i }}" hx-trigger="click" hx-target="#table-body"
+                hx-include="#filters, #search"
+                class="flex items-center justify-center px-3 h-8 leading-tight text-slate-500 bg-white border border-slate-300 hover:bg-slate-100 hover:text-slate-700 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white">{{
+                i }}</button>
+        </li>
+        {% endfor%}
+        {% if page == total_pages %}
+        <li>
+            <button disabled
+                class="flex items-center justify-center px-3 h-8 leading-tight text-slate-300 bg-white border border-slate-300 rounded-e-lg dark:bg-slate-800 dark:border-slate-700 dark:text-slate-600">Dalej</button>
+        </li>
+        {% else %}
+        <li>
+            <button hx-post="/laptops" name="page" value="{{ page + 1 }}" hx-trigger="click" hx-target="#table-body"
+                hx-include="#filters, #search"
+                class="flex items-center justify-center px-3 h-8 leading-tight text-slate-500 bg-white border border-slate-300 rounded-e-lg hover:bg-slate-100 hover:text-slate-700 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white">Dalej</button>
+        </li>
+        {% endif %}
+
+    </ul>
+</nav>

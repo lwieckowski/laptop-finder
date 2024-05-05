@@ -2,7 +2,6 @@
 
 {% from 'features/filter.jinja' import sidebar_filters, mobile_filters, mobile_filter_button %}
 {% from 'features/table.jinja' import table %}
-{% from 'features/chart.jinja' import chart %}
 
 {% block body %}
 <div id="main-body">
@@ -16,7 +15,7 @@
         </div>
         <div class="grid grid-cols-1 gap-x-8 gap-y-10 lg:grid-cols-4">
             {{ sidebar_filters(filters) }}
-            {{ table(laptops) }}
+            {{ table(laptops, page, per_page, total) }}
         </div>
     </main>
 </div>

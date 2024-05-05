@@ -57,3 +57,9 @@ def stripped(sequence: list[str]) -> list[str]:
     if sequence is None:
         return []
     return [s.strip() for s in sequence]
+
+def paginate(laptops: tuple[Laptop, ...], page: int, per_page: int) -> tuple[Laptop, ...]:
+    """Paginate laptops."""
+    start = (page - 1) * per_page
+    end = start + per_page
+    return laptops[start:end]

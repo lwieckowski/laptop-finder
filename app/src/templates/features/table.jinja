@@ -1,4 +1,4 @@
-{% macro table(laptops) %}
+{% macro table(laptops, page, per_page, total) %}
 <div class="lg:col-span-3">
     <div class="pb-4 bg-white dark:bg-slate-900">
         <label for="table-search" class="sr-only">Wyszukiwanie</label>
@@ -12,76 +12,13 @@
             </div>
             <input id="search" type="text" name="search"
                 class="block pt-2 ps-10 text-sm text-slate-900 border border-slate-300 rounded-lg w-80 bg-slate-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-slate-700 dark:border-slate-600 dark:placeholder-slate-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                placeholder="Szukaj" hx-post="/filter" hx-trigger="keyup changed delay:250ms"
-                hx-target="#table-body"
+                placeholder="Szukaj" hx-post="/laptops" hx-trigger="keyup changed delay:250ms" hx-target="#table-body"
                 hx-include="#filters, #search">
         </div>
     </div>
-    <div class="relative sm:rounded-lg mb-4">
-        <table class="table-auto w-full text-sm text-left rtl:text-right">
-            <thead
-                class="text-xs text-slate-700 uppercase bg-slate-50 dark:bg-slate-700 dark:text-slate-400 sticky top-0">
-                <tr>
-                    <th scope="col" class="px-6 py-3">{{ sortable_header("Model") }}</th>
-                    <th scope="col" class="px-6 py-3 hidden md:table-cell">{{ sortable_header("Ekran") }}</th>
-                    <th scope="col" class="px-6 py-3 hidden md:table-cell">{{ sortable_header("Dysk") }}</th>
-                    <th scope="col" class="px-6 py-3 hidden md:table-cell">{{ sortable_header("RAM") }}</th>
-                    <th scope="col" class="px-6 py-3 hidden lg:table-cell">{{ sortable_header("Waga") }}</th>
-                    <th scope="col" class="px-6 py-3">{{ sortable_header("Cena") }}</th>
-                </tr>
-            </thead>
-            <tbody id="table-body">
-                {% include 'features/table_body.jinja' %}
-            </tbody>
-        </table>
-        <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4"
-            aria-label="Table navigation">
-            <span
-                class="text-sm font-normal text-slate-500 dark:text-slate-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing
-                <span class="font-semibold text-slate-900 dark:text-white">1-10</span> of <span
-                    class="font-semibold text-slate-900 dark:text-white">1000</span></span>
-            <ul class="inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
-                <li>
-                    <a href="#"
-                        class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-slate-500 bg-white border border-slate-300 rounded-s-lg hover:bg-slate-100 hover:text-slate-700 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white">Previous</a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center justify-center px-3 h-8 leading-tight text-slate-500 bg-white border border-slate-300 hover:bg-slate-100 hover:text-slate-700 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white">1</a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center justify-center px-3 h-8 leading-tight text-slate-500 bg-white border border-slate-300 hover:bg-slate-100 hover:text-slate-700 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white">2</a>
-                </li>
-                <li>
-                    <a href="#" aria-current="page"
-                        class="flex items-center justify-center px-3 h-8 text-blue-600 border border-slate-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700 dark:border-slate-700 dark:bg-slate-700 dark:text-white">3</a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center justify-center px-3 h-8 leading-tight text-slate-500 bg-white border border-slate-300 hover:bg-slate-100 hover:text-slate-700 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white">4</a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center justify-center px-3 h-8 leading-tight text-slate-500 bg-white border border-slate-300 hover:bg-slate-100 hover:text-slate-700 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white">5</a>
-                </li>
-                <li>
-                    <a href="#"
-                        class="flex items-center justify-center px-3 h-8 leading-tight text-slate-500 bg-white border border-slate-300 rounded-e-lg hover:bg-slate-100 hover:text-slate-700 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white">Next</a>
-                </li>
-            </ul>
-        </nav>
+    <div id="table-body" class="relative sm:rounded-lg mb-4">
+        {% include 'features/table_body.jinja' %}
     </div>
 </div>
 {% endmacro %}
 
-{% macro sortable_header(text) %}
-<div class="flex items-center">
-    {{ text}}
-    <a href="#"><svg class="w-3 h-3 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-            viewBox="0 0 24 24">
-            <path
-                d="M8.574 11.024h6.852a2.075 2.075 0 0 0 1.847-1.086 1.9 1.9 0 0 0-.11-1.986L13.736 2.9a2.122 2.122 0 0 0-3.472 0L6.837 7.952a1.9 1.9 0 0 0-.11 1.986 2.074 2.074 0 0 0 1.847 1.086Zm6.852 1.952H8.574a2.072 2.072 0 0 0-1.847 1.087 1.9 1.9 0 0 0 .11 1.985l3.426 5.05a2.123 2.123 0 0 0 3.472 0l3.427-5.05a1.9 1.9 0 0 0 .11-1.985 2.074 2.074 0 0 0-1.846-1.087Z" />
-        </svg></a>
-</div>
-{% endmacro %}

@@ -38,7 +38,6 @@ def filter():
             total=len(LAPTOPS),
         )
     form_data = parse_form_data(form_data)
-    print(form_data.search_term)
     res = apply_filters(form_data.filters, LAPTOPS)
     res = apply_search(form_data.search_term, res)
     res_paged = paginate(res, page, PER_PAGE)

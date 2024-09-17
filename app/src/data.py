@@ -47,7 +47,6 @@ FILTERS = [
 ]
 
 
-
 LAPTOPS = tuple(
     [
         Laptop(
@@ -220,7 +219,7 @@ LAPTOPS = tuple(
             price="9999",
             producer="Acer",
         ),
- Laptop(
+        Laptop(
             model="MacBook Pro 13 M1",
             screen="13.3",
             disk="256GB",
@@ -390,7 +389,7 @@ LAPTOPS = tuple(
             price="9999",
             producer="Acer",
         ),
- Laptop(
+        Laptop(
             model="MacBook Pro 13 M1",
             screen="13.3",
             disk="256GB",
@@ -560,7 +559,7 @@ LAPTOPS = tuple(
             price="9999",
             producer="Acer",
         ),
- Laptop(
+        Laptop(
             model="MacBook Pro 13 M1",
             screen="13.3",
             disk="256GB",
@@ -730,7 +729,7 @@ LAPTOPS = tuple(
             price="9999",
             producer="Acer",
         ),
- Laptop(
+        Laptop(
             model="MacBook Pro 13 M1",
             screen="13.3",
             disk="256GB",
@@ -900,7 +899,7 @@ LAPTOPS = tuple(
             price="9999",
             producer="Acer",
         ),
- Laptop(
+        Laptop(
             model="MacBook Pro 13 M1",
             screen="13.3",
             disk="256GB",
@@ -1070,7 +1069,7 @@ LAPTOPS = tuple(
             price="9999",
             producer="Acer",
         ),
- Laptop(
+        Laptop(
             model="MacBook Pro 13 M1",
             screen="13.3",
             disk="256GB",

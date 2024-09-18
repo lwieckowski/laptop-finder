@@ -13,6 +13,11 @@ def parse_form_data(form_data: dict[str, list[str]]) -> FormData:
             )
         ),
         search_term=form_data.get("search", [""])[0],
+        sort_by=form_data.get("sort_by", [""])[0],
+        sort_order={
+            column: form_data.get(f"sort_order_{column}", [""])[0]
+            for column in Laptop.__annotations__
+        },
     )
 
 
@@ -40,6 +45,16 @@ def apply_search(search_term: str, laptops: tuple[Laptop, ...]) -> tuple[Laptop,
     if not search_term:
         return laptops
     return tuple(lap for lap in laptops if search_term.lower() in lap.model.lower())
+
+
+def apply_sort(
+    sort_by: str, sort_order: str, laptops: tuple[Laptop, ...]
+) -> tuple[Laptop, ...]:
+    """Sort laptops."""
+    if not sort_by:
+        return laptops
+    reverse = sort_order[sort_by] == "desc"
+    return sorted(laptops, key=lambda l: getattr(l, sort_by), reverse=reverse)
 
 
 @cache

@@ -1,4 +1,6 @@
 from dataclasses import dataclass
+from enum import Enum, StrEnum
+from typing import Literal, TypedDict
 
 
 @dataclass(frozen=True)
@@ -16,6 +18,8 @@ class FormData:
 
     filters: Filters
     search_term: str
+    sort_by: str
+    sort_order: dict[str, str]
 
 
 @dataclass(frozen=True)

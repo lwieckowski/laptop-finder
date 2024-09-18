@@ -1,7 +1,7 @@
 {% macro sortable_header(text, value, sort_order) %}
     <form id="sort-{{ value }}" class="sort">
     <input type="hidden" name="sort_order_{{ value }}" value="{{ sort_order }}">
-    <button class="flex items-center" name="sort_by" value="{{ value }}" hx-post="/laptops" hx-target="#table-body" hx-trigger="click" hx-include="#filters, #search, .sort" hx-on="htmx:configRequest: getSortOrder(event)">
+    <button class="flex items-center" name="sort_by" value="{{ value }}" hx-post="/laptops" hx-target="#table-body" hx-trigger="click" hx-include="#filters, #search, .sort, #last_sort_by" hx-on="htmx:configRequest: getSortOrder(event)">
         {{ text}}
         <svg class="w-3 h-3 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
             viewBox="0 0 24 24">

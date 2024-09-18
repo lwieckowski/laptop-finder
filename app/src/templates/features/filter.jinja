@@ -2,7 +2,7 @@
 <section aria-labelledby="filters-heading" class="hidden lg:block pb-24 pt-6">
     <h2 id="filters-heading" class="sr-only">Filters</h2>
     <div id="filter-container">
-        <form id="filters" hx-post="/laptops" hx-trigger="change" hx-target="#table-body" hx-include="#filters, #search, .sort">
+        <form id="filters" hx-post="/laptops" hx-trigger="change" hx-target="#table-body" hx-include="#filters, #search, .sort, #last_sort_by">
             {% for filter in filters %}
             {{ accordion(filter.label, checkboxes(filter.type, filter.options)) }}
             {% endfor %}

@@ -21,7 +21,8 @@ def index():
         page=1,
         per_page=PER_PAGE,
         total=len(LAPTOPS),
-        sort_order={column: "" for column in Laptop.__annotations__}
+        sort_order={column: "" for column in Laptop.__annotations__},
+        last_sort_by=""
     )
 
 
@@ -39,13 +40,14 @@ def filter():
             page=page,
             per_page=PER_PAGE,
             total=len(LAPTOPS),
-            sort_order=form_data.sort_order
+            sort_order=form_data.sort_order,
+            last_sort_by=""
         )
     form_data = parse_form_data(form_data)
     print(form_data)
     res = apply_filters(form_data.filters, LAPTOPS)
     res = apply_search(form_data.search_term, res)
-    res = apply_sort(form_data.sort_by, form_data.sort_order, res)
+    res = apply_sort(form_data.sort_by, form_data.sort_order, form_data.last_sort_by, res)
     res_paged = paginate(res, page, PER_PAGE)
     return render_template(
         "features/table_body.jinja",
@@ -53,7 +55,8 @@ def filter():
         page=page,
         per_page=PER_PAGE,
         total=len(res),
-        sort_order=form_data.sort_order
+        sort_order=form_data.sort_order,
+        last_sort_by=form_data.last_sort_by
     )
 
 

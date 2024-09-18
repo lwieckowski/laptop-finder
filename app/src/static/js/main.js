@@ -87,16 +87,16 @@ const resizeObserver = new ResizeObserver((entries) => {
 
 resizeObserver.observe(mainBody);
 
+const lastSortByEl = document.getElementById("last_sort_by");
 
 function getSortOrder(e) {
   const value = e.target.value;
   const id = `sort-${value}`
   const el = document.getElementById(id);
   const sort_order = el.querySelector('input');
-  console.log(sort_order.value);
   const new_sort_order = sort_order.value != "asc" ? "asc" : "desc";
   e.detail.parameters[`sort_order_${value}`] = new_sort_order;
-  console.log(e.detail.parameters)
+  e.detail.parameters[`last_sort_by`] = value;
   // console.log(new_sort_order);
   // sort_order.value = new_sort_order;
   // console.log(sort_order.value);

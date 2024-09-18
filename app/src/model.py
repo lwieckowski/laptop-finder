@@ -20,6 +20,7 @@ class FormData:
     search_term: str
     sort_by: str
     sort_order: dict[str, str]
+    last_sort_by: str
 
 
 @dataclass(frozen=True)

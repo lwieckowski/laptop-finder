@@ -18,6 +18,7 @@ def parse_form_data(form_data: dict[str, list[str]]) -> FormData:
             column: form_data.get(f"sort_order_{column}", [""])[0]
             for column in Laptop.__annotations__
         },
+        last_sort_by=form_data.get("last_sort_by", [""])[0]
     )
 
 
@@ -48,11 +49,13 @@ def apply_search(search_term: str, laptops: tuple[Laptop, ...]) -> tuple[Laptop,
 
 
 def apply_sort(
-    sort_by: str, sort_order: str, laptops: tuple[Laptop, ...]
+    sort_by: str, sort_order: str, last_sort_by: str, laptops: tuple[Laptop, ...]
 ) -> tuple[Laptop, ...]:
     """Sort laptops."""
-    if not sort_by:
+    if not sort_by and not last_sort_by:
         return laptops
+    if not sort_by:
+        sort_by = last_sort_by
     reverse = sort_order[sort_by] == "desc"
     return sorted(laptops, key=lambda l: getattr(l, sort_by), reverse=reverse)
 

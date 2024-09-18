@@ -1,10 +1,10 @@
 {% from '/components/sortable_header.jinja' import sortable_header %}
 
-<table class="table-auto w-full text-sm text-left rtl:text-right">
+<table class="table-fixed w-full text-sm text-left rtl:text-right">
     <thead class="text-xs text-slate-700 uppercase bg-slate-50 dark:bg-slate-700 dark:text-slate-400 sticky top-0">
         <input id="last_sort_by" type="hidden" name="last_sort_by" value="{{ last_sort_by }}">
         <tr>
-            <th scope="col" class="px-6 py-3">{{ sortable_header("Model", "model", sort_order["model"]) }}</th>
+            <th scope="col" class="px-6 py-3 w-[250px]">{{ sortable_header("Model", "model", sort_order["model"]) }}</th>
             <th scope="col" class="px-6 py-3 hidden md:table-cell">{{ sortable_header("Ekran", "screen", sort_order["screen"]) }}</th>
             <th scope="col" class="px-6 py-3 hidden md:table-cell">{{ sortable_header("Dysk", "disk", sort_order["disk"]) }}</th>
             <th scope="col" class="px-6 py-3 hidden md:table-cell">{{ sortable_header("RAM", "ram", sort_order["ram"]) }}</th>

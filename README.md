@@ -1,0 +1,1 @@
+A small unfinished side project built to explore HTMX. Features interactive table with filters, pagination and search - all rendered server-side.

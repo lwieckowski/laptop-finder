@@ -5,11 +5,11 @@
         <input id="last_sort_by" type="hidden" name="last_sort_by" value="{{ last_sort_by }}">
         <tr>
             <th scope="col" class="px-6 py-3 w-[250px]">{{ sortable_header("Model", "model", sort_order["model"]) }}</th>
-            <th scope="col" class="px-6 py-3 hidden md:table-cell">{{ sortable_header("Ekran", "screen", sort_order["screen"]) }}</th>
-            <th scope="col" class="px-6 py-3 hidden md:table-cell">{{ sortable_header("Dysk", "disk", sort_order["disk"]) }}</th>
+            <th scope="col" class="px-6 py-3 hidden md:table-cell">{{ sortable_header("Screen", "screen", sort_order["screen"]) }}</th>
+            <th scope="col" class="px-6 py-3 hidden md:table-cell">{{ sortable_header("Disc", "disk", sort_order["disk"]) }}</th>
             <th scope="col" class="px-6 py-3 hidden md:table-cell">{{ sortable_header("RAM", "ram", sort_order["ram"]) }}</th>
-            <th scope="col" class="px-6 py-3 hidden lg:table-cell">{{ sortable_header("Waga", "weight", sort_order["weight"]) }}</th>
-            <th scope="col" class="px-6 py-3">{{ sortable_header("Cena", "price", sort_order["price"]) }}</th>
+            <th scope="col" class="px-6 py-3 hidden lg:table-cell">{{ sortable_header("Weight", "weight", sort_order["weight"]) }}</th>
+            <th scope="col" class="px-6 py-3">{{ sortable_header("Price", "price", sort_order["price"]) }}</th>
         </tr>
     </thead>
     <tbody>
@@ -39,7 +39,7 @@
 </table>
 <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between pt-4" aria-label="Table navigation">
     <span
-        class="text-sm font-normal text-slate-500 dark:text-slate-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">Pokazuję
+        class="text-sm font-normal text-slate-500 dark:text-slate-400 mb-4 md:mb-0 block w-full md:inline md:w-auto">Showing
         <span class="font-semibold text-slate-900 dark:text-white">{{ 1 + (page - 1) * per_page }} - {{ (page - 1) *
             per_page + laptops|length }}</span> z <span class="font-semibold text-slate-900 dark:text-white">{{ total
             }}</span></span>

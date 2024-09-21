@@ -2,14 +2,14 @@ from model import Laptop
 
 
 NAVLINKS = [
-    {"text": "Do gier", "url": "/"},
-    {"text": "Do pracy", "url": "/"},
-    {"text": "Wszystkie", "url": "/"},
+    {"text": "Gaming", "url": "/"},
+    {"text": "Work", "url": "/"},
+    {"text": "All", "url": "/"},
 ]
 FILTERS = [
     {
         "type": "producer",
-        "label": "Producent",
+        "label": "Producer",
         "options": [
             {"label": "Apple", "value": "Apple"},
             {"label": "Dell", "value": "Dell"},
@@ -25,7 +25,7 @@ FILTERS = [
     },
     {
         "type": "screen",
-        "label": "Ekran",
+        "label": "Screen",
         "options": [
             {"label": "13.1", "value": "13.1"},
             {"label": "13.4", "value": "13.4"},
@@ -36,7 +36,7 @@ FILTERS = [
     },
     {
         "type": "disk",
-        "label": "Dysk",
+        "label": "Disc",
         "options": [
             {"label": "128GB", "value": "128GB"},
             {"label": "256GB", "value": "256GB"},
@@ -1241,8 +1241,3 @@ LAPTOPS = tuple(
         ),
     ]
 )
-
-
-if __name__ == "__main__":
-    a = LAPTOPS * 10
-    print()

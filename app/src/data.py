@@ -36,7 +36,7 @@ FILTERS = [
     },
     {
         "type": "disk",
-        "label": "Disc",
+        "label": "Disk",
         "options": [
             {"label": "128GB", "value": "128GB"},
             {"label": "256GB", "value": "256GB"},

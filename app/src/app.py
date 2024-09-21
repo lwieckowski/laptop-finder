@@ -6,7 +6,7 @@ from filtering import apply_filters, apply_search, apply_sort, paginate, parse_f
 
 app = Flask(__name__)
 
-PER_PAGE = 20
+PER_PAGE = 10
 
 
 @app.route("/")

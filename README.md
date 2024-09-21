@@ -1,5 +1,5 @@
 # LaptopFinder
-A small unfinished side project built to explore HTMX.
+A small unfinished and unpolished  side project built to explore HTMX.
 
 # Features
 - Interactive table with filters, sorting, pagination and search - all rendered server-side

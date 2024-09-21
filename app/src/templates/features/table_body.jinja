@@ -47,13 +47,13 @@
         {% if page == 1 %}
         <li>
             <button disabled
-                class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-slate-300 bg-white border border-slate-300 rounded-s-lg dark:bg-slate-800 dark:border-slate-700 dark:text-slate-600">Wstecz</button>
+                class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-slate-300 bg-white border border-slate-300 rounded-s-lg dark:bg-slate-800 dark:border-slate-700 dark:text-slate-600">Previous</button>
         </li>
         {% else %}
         <li>
             <button name="page" value="{{ page - 1 }}" hx-post="/laptops" hx-trigger="click" hx-target="#table-body"
                 hx-include="#filters, #search, .sort, #last_sort_by"
-                class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-slate-500 bg-white border border-slate-300 rounded-s-lg hover:bg-slate-100 hover:text-slate-700 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white">Wstecz</button>
+                class="flex items-center justify-center px-3 h-8 ms-0 leading-tight text-slate-500 bg-white border border-slate-300 rounded-s-lg hover:bg-slate-100 hover:text-slate-700 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white">Previous</button>
         </li>
         {% endif %}
         {% for i in range(1, page) %}
@@ -82,13 +82,13 @@
         {% if page == total_pages %}
         <li>
             <button disabled
-                class="flex items-center justify-center px-3 h-8 leading-tight text-slate-300 bg-white border border-slate-300 rounded-e-lg dark:bg-slate-800 dark:border-slate-700 dark:text-slate-600">Dalej</button>
+                class="flex items-center justify-center px-3 h-8 leading-tight text-slate-300 bg-white border border-slate-300 rounded-e-lg dark:bg-slate-800 dark:border-slate-700 dark:text-slate-600">Next</button>
         </li>
         {% else %}
         <li>
             <button hx-post="/laptops" name="page" value="{{ page + 1 }}" hx-trigger="click" hx-target="#table-body"
                 hx-include="#filters, #search, .sort, #last_sort_by"
-                class="flex items-center justify-center px-3 h-8 leading-tight text-slate-500 bg-white border border-slate-300 rounded-e-lg hover:bg-slate-100 hover:text-slate-700 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white">Dalej</button>
+                class="flex items-center justify-center px-3 h-8 leading-tight text-slate-500 bg-white border border-slate-300 rounded-e-lg hover:bg-slate-100 hover:text-slate-700 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400 dark:hover:bg-slate-700 dark:hover:text-white">Next</button>
         </li>
         {% endif %}
 
